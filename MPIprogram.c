@@ -23,16 +23,14 @@ int main(int argc, char** argv)
 	MPI_Init(&argc, &argv);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	
+	//ввод параметров с консоли
 	parametrs(argc, argv, &m, &M, &s, &T);
 	if (rank == 0) {
 		printf("m = %d, M = %d, s = %d, T = %d", m, M, s, T);
 		printf("\nSize:\tTransfer:\n");
 	}
-
-
+	
 	arr = msglensArray(m, M, s, &len);
-	messagingFunc(0, T, &time);
-	printf("\nmessage length = 0, time = %lf\n", time);
 
 	for (int i = 0; i < len; i++) {
 		msglen = arr[i];
@@ -40,13 +38,12 @@ int main(int argc, char** argv)
 		if (rank == 0) {
 			R = (double)T * msglen * 2 / (time * 1000000);
 			printf("%d\t%lf\n", msglen, R);
+			PutDatainFile(msglen, R);
 		}
 	}
-
-
-	
 	
 	MPI_Finalize();
 	free(arr);
+	
 	return 0;
 }

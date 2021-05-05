@@ -3,12 +3,13 @@
 #include <stdlib.h>
 #include "AllFunc.h"
 
+// console input processing function
 
 void parametrs(int argc, char** argv, int* pm, int* pM, int* ps, int* pT) {
 	int k = 1, num;
 	char c, key;
 	char* str;
-	//значения по умолчанию
+	//-default values------
 	*pm = 2;			 //
 	*pM = 5949;			 //
 	*ps = 512;			 //
@@ -43,7 +44,8 @@ void parametrs(int argc, char** argv, int* pm, int* pM, int* ps, int* pT) {
 	}
 }
 
-//функция подготовки бинарного файла с 2048 символами
+//function for preparing a binary file with 2048 characters
+
 void fillFile() {
 	FILE* f;
 	const char* filename = "binbase";
@@ -57,6 +59,10 @@ void fillFile() {
 	fwrite(&c, sizeof(char), 1, f);
 	fclose(f);
 }
+
+// function of forming an array of message lengths 
+// increasing in arithmetic progression with the given parameters
+// parameters are set by console input or default values are taken
 
 int* msglensArray(int m, int M, int s, int* pl) {
 	int* arr;

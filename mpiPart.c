@@ -4,6 +4,11 @@
 #include "AllFunc.h"
 
 
+// two processes in a loop exchange messages
+// the number of exchange iterations (T) and massage length (msglen) is passed to the function
+// the first process track the time spent on all exchange iterations
+// the elapsed time is recorded in a variable -> ptime
+
 void messagingFunc(int msglen, int T, double* ptime) {
 	double time_start, time_stop;
 	MPI_Status status1, status2;

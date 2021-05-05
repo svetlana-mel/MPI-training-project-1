@@ -17,6 +17,8 @@ int* msglensArray(int m, int M, int s, int* pl);
 
 void printIntArr(int* a, int len);
 
+void PutDatainFile(int msglen, double R);
+
 #endif
 
 
